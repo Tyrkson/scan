@@ -4,10 +4,11 @@ import { StoreProvider } from '@contexts/StoreProvider'
 import { WhaleProvider } from '@contexts/WhaleContext'
 import { StatsProvider } from '@store/stats'
 import Head from 'next/head'
-import { PropsWithChildren } from 'react'
+import React, { PropsWithChildren } from 'react'
 import { ScanAppProps } from '../pages/_app'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
+import { WarningBanner } from '@components/commons/banner/WarningBanner'
 
 const title = 'DeFi Scan – Native Decentralized Finance for Bitcoin'
 const description = 'DeFi Blockchain, enabling decentralized finance with Bitcoin-grade security, strength and immutability. A blockchain dedicated to fast, intelligent and transparent financial services, accessible by everyone.'
@@ -43,6 +44,7 @@ export function Default (props: PropsWithChildren<ScanAppProps>): JSX.Element | 
       <NetworkProvider>
         <WhaleProvider>
           <StoreProvider state={props.initialReduxState}>
+            <WarningBanner message='We are currently investigating a sync issue between the blockchain and the interface on the apps. This is only a display issue, and does not affect the balances in the wallet.' />
             <StatsProvider>
               <Header />
 
